@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Mind Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="status">Drag any node to reposition it. Click the Auto-Layout button to organize your mind map.</div>
+    
+    <div class="mind-map-container">
+        <div class="mind-map">
+            <!-- Nodes and connectors will be added dynamically -->
+        </div>
+    </div>
+
+    <div class="node-form-overlay" id="nodeFormOverlay">
+        <div class="node-form">
+            <h3 id="formTitle">Add New Node</h3>
+            <div class="form-group">
+                <label for="nodeName">Node Name:</label>
+                <input type="text" id="nodeName" placeholder="Enter node name">
+            </div>
+            <div class="form-group" id="nodeTypeGroup">
+                <label>Node Type:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="nodeType" value="directory" checked> Directory
+                    </label>
+                    <label>
+                        <input type="radio" name="nodeType" value="leaf"> Leaf
+                    </label>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="saveNodeBtn">Save</button>
+                <button id="cancelNodeBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="question-form-overlay" id="questionFormOverlay">
+        <div class="question-form">
+            <h3>Add New Question</h3>
+            <div class="form-group">
+                <label for="questionText">Question:</label>
+                <input type="text" id="questionText" placeholder="Enter question text">
+            </div>
+            <div class="form-actions">
+                <button id="saveQuestionBtn">Save</button>
+                <button id="cancelQuestionBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="zoomIn">Zoom In</button>
+        <button id="zoomOut">Zoom Out</button>
+        <button id="autoLayout">Auto-Layout</button>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.mind-map-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.mind-map {
+    width: 2400px;
+    height: 1600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+}
+
+.node {
+    position: absolute;
+    background-color: #e0e0e0;
+    border: 2px solid #4caf50;
+    border-radius: 15px;
+    padding: 10px 15px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    position: relative;
+}
+
+.node:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.node.dragging {
+    cursor: grabbing;
+    opacity: 0.8;
+    z-index: 100;
+}
+
+.node.root {
+    width: 240px;
+    height: 140px;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 5;
+    background-color: #e8f5e9;
+    border: 3px solid #2e7d32;
+    box-shadow: 0 0 20px rgba(0, 100, 0, 0.3);
+}
+
+.node.directory {
+    width: 200px;
+    height: 100px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 4;
+    background-color: #f0f7f0;
+}
+
+.node.leaf {
+    width: 150px;
+    height: 80px;
+    font-size: 14px;
+    z-index: 3;
+}
+
+.node.expanded {
+    width: 300px;
+    height: auto;
+    min-height: 150px;
+    z-index: 50;
+}
+
+.node .title-input {
+    border: none;
+    background: transparent;
+    font-size: inherit;
+    text-align: center;
+    width: 90%;
+    border-bottom: 1px solid #4caf50;
+    outline: none;
+    margin-bottom: 5px;
+}
+
+.node.root .title-input {
+    font-weight: bold;
+    font-size: 24px;
+    border-bottom: 2px solid #2e7d32;
+}
+
+.add-button {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 6;
+}
+
+.node.root .add-button {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    background-color: #2e7d32;
+}
+
+.add-button:hover {
+    background-color: #388e3c;
+}
+
+.score {
+    margin-top: 5px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.high {
+    background-color: #4caf50;
+}
+
+.medium {
+    background-color: #ffc107;
+}
+
+.low {
+    background-color: #f44336;
+}
+
+.fraction {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #555;
+    cursor: pointer;
+}
+
+.questions-list {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    text-align: left;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.questions-list.visible {
+    display: block;
+}
+
+.question-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.question-text {
+    flex-grow: 1;
+    padding-right: 10px;
+}
+
+.question-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.question-actions button {
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+
+.correct-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.wrong-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.add-question-btn {
+    margin-top: 5px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.connector {
+    position: absolute;
+    background-color: #4caf50;
+    height: 2px;
+    transform-origin: 0 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.controls button {
+    padding: 10px 15px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+
+#resetButton {
+    background-color: #2196f3;
+}
+
+.controls button:hover {
+    background-color: #388e3c;
+}
+
+#resetButton:hover {
+    background-color: #0b7dda;
+}
+
+.status {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    font-size: 14px;
+}
+
+/* Modal overlays */
+.node-form-overlay,
+.question-form-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.node-form,
+.question-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#saveNodeBtn,
+#saveQuestionBtn {
+    background-color: #4caf50;
+    color: white;
+}
+
+#cancelNodeBtn,
+#cancelQuestionBtn {
+    background-color: #f44336;
+    color: white;
+}
