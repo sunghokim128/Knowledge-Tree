@@ -30,11 +30,3 @@ A dynamic, visual representation of subject matter that breaks down complex cont
 
 - Notion design & specs:  
   https://hickory-cabin-21e.notion.site/Knowledge-Tree-2025-03-1bd300defb3b803e8047d852a1c58767
-
----
-
-## 🚀 Getting Started
-
-1. **Clone this repository**  
-   ```bash
-   git clone https://github.com/your-org/knowledge-tree.git
